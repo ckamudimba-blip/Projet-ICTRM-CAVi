@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport & Incoterms 2020 — CEMAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gd:#0B4D3A;--gm:#1A7A58;--gb:#2DBF87;--gl:#D1F4E6;--gp:#F0FAF5;
+  --am:#E8A830;--ap:#FDF5E0;--bl:#1E6FBA;--bp:#E8F2FC;
+  --rp:#FEF0EE;--red:#C0392B;
+  --ink:#0F1F18;--im:#3A5248;--il:#7A9A8E;
+  --surf:#F6FAF8;--card:#fff;--brd:rgba(0,0,0,.08);--brds:rgba(0,0,0,.13);
+  --rad:12px;--rads:8px;--shd:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--surf);color:var(--ink);min-height:100vh}
+
+/* HEADER */
+.hdr{background:var(--gd);padding:0 2rem;display:flex;align-items:stretch;justify-content:space-between;gap:1rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.hbrand{display:flex;align-items:center;gap:12px;padding:1rem 0}
+.logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--gb);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.logo span{color:rgba(255,255,255,.4);font-weight:400}
+.htag{font-size:10px;background:rgba(45,191,135,.15);color:var(--gb);border:1px solid rgba(45,191,135,.3);padding:3px 9px;border-radius:20px;letter-spacing:.06em;font-weight:600;white-space:nowrap}
+.htabs{display:flex;align-items:stretch}
+.tbtn{padding:0 1.5rem;background:none;border:none;border-bottom:3px solid transparent;color:rgba(255,255,255,.45);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tbtn:hover{color:rgba(255,255,255,.8)}
+.tbtn.active{color:var(--gb);border-bottom-color:var(--gb)}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* FORM CONTAINER */
+.fc{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+.sec{background:var(--card);border:.5px solid var(--brds);border-radius:var(--rad);padding:1.25rem;margin-bottom:1rem;box-shadow:var(--shd)}
+.stit{font-size:10px;font-weight:700;color:var(--il);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:flex;align-items:center}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:4px}
+label{font-size:13px;color:var(--im);font-weight:500}
+input,select,textarea{width:100%;border-radius:var(--rads);border:1.5px solid var(--brds);padding:8px 10px;font-size:14px;background:var(--card);color:var(--ink);font-family:'DM Sans',sans-serif;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gb);box-shadow:0 0 0 3px rgba(45,191,135,.12)}
+textarea{resize:vertical;min-height:64px}
+.mtabs{display:flex;gap:8px;margin-bottom:14px}
+.mtab{padding:7px 18px;border-radius:var(--rads);border:1.5px solid var(--brds);font-size:13px;cursor:pointer;background:var(--card);color:var(--im);font-weight:500;transition:all .15s;font-family:'DM Sans',sans-serif}
+.mtab.active{border-color:var(--gb);background:var(--gp);color:var(--gd);font-weight:600}
+.igrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:4px}
+.ibtn{border:1.5px solid var(--brds);border-radius:var(--rads);padding:9px 6px;font-size:12px;font-weight:700;background:var(--card);color:var(--ink);cursor:pointer;text-align:center;transition:all .15s;font-family:'Syne',sans-serif}
+.ibtn:hover:not(.sel){background:var(--gp);border-color:var(--gb)}
+.ibtn.sel{border:2px solid var(--gb);background:var(--gp);color:var(--gd)}
+.ibadge{font-size:10px;font-weight:400;color:var(--il);display:block;margin-top:3px;line-height:1.3;font-family:'DM Sans',sans-serif}
+.ibtn.sel .ibadge{color:var(--gm)}
+.idesc{margin-top:10px;padding:11px 13px;background:var(--gp);border-radius:var(--rads);font-size:13px;color:var(--gd);display:none;line-height:1.6;border-left:3px solid var(--gb)}
+.azone{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.galerts{display:flex;flex-direction:column;gap:7px;margin-bottom:1rem}
+.al{display:flex;gap:10px;align-items:flex-start;padding:11px 13px;border-radius:var(--rads);font-size:13px;line-height:1.5;border:1px solid}
+.ae{background:#FEF2F2;border-color:#FCA5A5;color:#7F1D1D}
+.aw{background:#FFFBEB;border-color:#FCD34D;color:#78350F}
+.ai{background:var(--bp);border-color:#93C5FD;color:#1E3A5F}
+.ao{background:#F0FDF4;border-color:#86EFAC;color:#14532D}
+.aic{font-size:15px;flex-shrink:0;margin-top:1px}
+.atit{font-weight:600;margin-bottom:2px;font-size:13px}
+.chdr{display:grid;grid-template-columns:1fr 56px 120px 28px;gap:8px;margin-bottom:6px;padding:0 2px}
+.chdr span{font-size:11px;color:var(--il);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.crow{display:grid;grid-template-columns:1fr 56px 120px 28px;gap:8px;align-items:center;margin-bottom:8px}
+.dbtn{border:none;background:transparent;color:#bbb;font-size:20px;cursor:pointer;line-height:1;padding:0;transition:color .15s}
+.dbtn:hover{color:var(--red)}
+.abtn{border:1.5px dashed var(--brds);border-radius:var(--rads);padding:9px;font-size:13px;color:var(--il);background:transparent;cursor:pointer;width:100%;text-align:center;margin-top:4px;transition:all .15s;font-family:'DM Sans',sans-serif}
+.abtn:hover{background:var(--gp);border-color:var(--gb);color:var(--gd)}
+.tots{background:var(--surf);border-radius:var(--rads);padding:14px;margin-top:12px;border:1px solid var(--brds)}
+.tl{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--im);padding:4px 0}
+.tl input{width:60px;padding:3px 6px;font-size:13px;text-align:right}
+.tf{display:flex;justify-content:space-between;font-size:17px;font-weight:700;color:var(--ink);padding-top:10px;margin-top:8px;border-top:1.5px solid var(--brds);font-family:'Syne',sans-serif}
+.curr{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.curr label{font-size:13px;color:var(--im);white-space:nowrap;font-weight:500}
+.curr select{width:auto}
+.rinfo{font-size:12px;color:var(--il);font-style:italic}
+.conv{text-align:right;font-size:12px;color:var(--il);margin-top:5px;font-style:italic}
+.prow{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.prow label{font-size:13px;color:var(--im);white-space:nowrap;font-weight:500}
+.prow select{width:auto;flex:1}
+.arow{display:flex;gap:10px;margin-top:1.75rem}
+.breset{flex:1;padding:11px;border-radius:var(--rads);border:1.5px solid var(--brds);background:var(--card);font-size:14px;font-weight:500;cursor:pointer;color:var(--im);transition:all .15s;font-family:'DM Sans',sans-serif}
+.breset:hover{background:var(--surf)}
+.bgen{flex:2;padding:11px;border-radius:var(--rads);border:2px solid var(--gm);background:var(--gm);font-size:14px;font-weight:700;cursor:pointer;color:#fff;transition:all .15s;font-family:'Syne',sans-serif}
+.bgen:hover:not(:disabled){background:var(--gd);border-color:var(--gd)}
+.bgen:disabled{background:#aaa;border-color:#aaa;cursor:not-allowed;opacity:.7}
+.probadge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.25);color:#fff;font-weight:600;margin-left:6px;vertical-align:middle}
+
+/* GUIDE CONTAINER */
+.gc{max-width:680px;margin:0 auto;padding:2rem 1.5rem 3rem}
+.pwrap{margin-bottom:2rem}
+.pinfo{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.plbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--il)}
+.pstep{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--gm)}
+.ptrack{height:3px;background:var(--brd);border-radius:2px;overflow:hidden}
+.pfill{height:100%;background:linear-gradient(90deg,var(--gm),var(--gb));border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.gs{display:none}
+.gs.active{display:block;animation:slin .35s cubic-bezier(.4,0,.2,1)}
+@keyframes slin{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+.snum{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gm);margin-bottom:.5rem}
+.sq{font-family:'Syne',sans-serif;font-size:22px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:1rem}
+.sh{font-size:13px;line-height:1.7;color:var(--im);background:var(--gp);border-left:3px solid var(--gb);padding:.7rem 1rem;border-radius:0 var(--rads) var(--rads) 0;margin-bottom:1.5rem}
+.opts{display:flex;flex-direction:column;gap:10px}
+.obtn{text-align:left;padding:1rem 1.25rem;border:1.5px solid var(--brd);border-radius:var(--rad);background:var(--card);cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.obtn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gb);transform:scaleY(0);transition:transform .2s}
+.obtn:hover{border-color:var(--gb);background:var(--gp)}
+.obtn:hover::before{transform:scaleY(1)}
+.ot{display:block;font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;transition:color .2s}
+.obtn:hover .ot{color:var(--gd)}
+.os{font-size:13px;color:var(--il)}
+.bbk{margin-top:1.25rem;font-size:13px;color:var(--il);cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:6px;transition:color .2s}
+.bbk:hover{color:var(--ink)}
+.sbox{background:var(--card);border:1.5px solid var(--brd);border-radius:var(--rad);padding:1.25rem}
+.srow{display:flex;gap:10px;margin-bottom:.75rem}
+.sinp{flex:1;padding:10px 14px;border:1.5px solid var(--brd);border-radius:var(--rads);font-family:'DM Sans',sans-serif;font-size:14px;background:var(--surf);color:var(--ink);transition:border-color .2s}
+.sinp:focus{outline:none;border-color:var(--gb)}
+.sbtn{padding:10px 20px;background:var(--gd);color:#fff;border:none;border-radius:var(--rads);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+.sbtn:hover{background:var(--gm)}
+.sbtn:disabled{opacity:.5;cursor:not-allowed}
+.ast{font-size:12px;color:var(--il);min-height:18px;margin-bottom:.75rem}
+.ast.ld{color:var(--gm);display:flex;align-items:center;gap:8px}
+.ast.ld::before{content:'';width:12px;height:12px;border:2px solid var(--gl);border-top-color:var(--gm);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slist{display:flex;flex-direction:column;gap:8px}
+.sitem{padding:.75rem 1rem;border:1.5px solid var(--brd);border-radius:var(--rads);cursor:pointer;transition:all .2s;background:var(--surf)}
+.sitem:hover{border-color:var(--gb);background:var(--gp)}
+.shdr2{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.scode{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gm);background:var(--gl);padding:2px 8px;border-radius:4px}
+.scat{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--ap);color:#7A5000}
+.sdesc{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.sdd{font-size:12px;color:var(--il)}
+.errbox{font-size:13px;color:var(--red);background:var(--rp);border-radius:var(--rads);padding:.5rem .75rem;margin-top:.5rem;display:none}
+.rcard{background:var(--card);border:1.5px solid var(--brd);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shd)}
+.rhdr{background:var(--gd);padding:1.5rem;position:relative}
+.rhdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gb),transparent)}
+.rbadge{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gb);margin-bottom:.5rem}
+.rname{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:.25rem;line-height:1.2}
+.rtag{font-size:14px;color:rgba(255,255,255,.65)}
+.rbody{padding:1.5rem}
+.rsec{margin-bottom:1.25rem}
+.rsti{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--il);margin-bottom:.6rem}
+.tbar{display:flex;border-radius:var(--rads);overflow:hidden}
+.bv{background:var(--gl);color:var(--gd);font-family:'Syne',sans-serif;font-size:12px;font-weight:700;padding:8px 10px;display:flex;align-items:center;justify-content:center}
+.bb{background:var(--bp);color:var(--bl);font-family:'Syne',sans-serif;font-size:12px;font-weight:700;padding:8px 10px;display:flex;align-items:center;justify-content:center}
+.blbls{display:flex;justify-content:space-between;font-size:11px;color:var(--il);margin-top:4px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:12px;padding:4px 12px;border-radius:20px;font-weight:500}
+.po{background:var(--gl);color:var(--gd)}.pw{background:var(--ap);color:#7A5000}.pi{background:var(--bp);color:var(--bl)}
+.pedbox{background:var(--surf);border-radius:var(--rads);padding:.85rem 1rem;font-size:13px;color:var(--im);line-height:1.75;border:1px solid var(--brd)}
+.cusbox{background:var(--surf);border:1.5px solid var(--gl);border-radius:var(--rad);padding:1.1rem;margin-bottom:1.25rem}
+.cushdr{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gm);margin-bottom:.75rem;display:flex;align-items:center;gap:8px}
+.cushdr::before{content:'';width:8px;height:8px;background:var(--gb);border-radius:50%;flex-shrink:0}
+.cusinp{display:flex;gap:10px;margin-bottom:.75rem;flex-wrap:wrap}
+.ci{flex:1;min-width:140px;padding:8px 12px;border:1.5px solid var(--brd);border-radius:var(--rads);font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;color:var(--ink)}
+.ci:focus{outline:none;border-color:var(--gb)}
+.csel{padding:8px 12px;border:1.5px solid var(--brd);border-radius:var(--rads);font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;color:var(--ink)}
+.cutbl{width:100%}
+.curow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--brd);font-size:13px}
+.curow:last-child{border-bottom:none;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--gd);padding-top:10px}
+.culbl{color:var(--il)}.cuval{font-family:'Syne',sans-serif;font-weight:600;color:var(--ink)}
+.cuempty{font-size:13px;color:var(--il);font-style:italic;padding:4px 0}
+.cunote{font-size:11px;color:var(--gm);margin-top:.75rem;font-style:italic;line-height:1.5}
+.alts{border-top:1px solid var(--brd);padding-top:1rem;margin-top:.25rem}
+.achip{display:inline-flex;align-items:center;gap:6px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border:1.5px solid var(--brd);border-radius:20px;margin:4px 4px 4px 0;cursor:pointer;background:var(--card);color:var(--ink);transition:all .2s}
+.achip:hover{border-color:var(--gb);background:var(--gp);color:var(--gd)}
+.rsbtn{margin-top:1.25rem;width:100%;padding:.75rem;border:1.5px solid var(--brd);border-radius:var(--rad);background:var(--card);color:var(--im);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.rsbtn:hover{background:var(--surf);color:var(--ink)}
+.footer{text-align:center;font-size:12px;color:var(--il);margin-top:2rem;padding-bottom:1.5rem;line-height:1.7}
+.hlnk{background:none;border:none;color:var(--gm);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;margin-left:auto;float:right}
+@media(max-width:480px){
+  .hdr{padding:0 1rem;flex-wrap:wrap}
+  .htabs{width:100%;overflow-x:auto;padding-bottom:2px}
+  .tbtn{padding:0 1rem;font-size:12px}
+  .gc{padding:1.5rem 1rem}
+  .sq{font-size:18px}
+  .rname{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hbrand">
+    <div class="logo">Transport<span> &</span> Incoterms</div>
+    <div class="htag">CEMAC · 2020</div>
+  </div>
+  <nav class="htabs">
+    <button class="tbtn active" onclick="switchTab('s',this)"><span>📋</span> Soumission devis</button>
+    <button class="tbtn" onclick="switchTab('g',this)"><span>🧭</span> Guide Incoterm</button>
+  </nav>
+</header>
+
+<!-- ═══ PANEL SOUMISSION ═══ -->
+<div id="ps" class="panel active">
+<div class="fc">
+  <div id="galz" class="galerts"></div>
+
+  <div class="sec">
+    <div class="stit">Informations générales</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="fld"><label>Société / Transitaire</label><input type="text" id="company" placeholder="Ex: TransLog Afrique SARL"></div>
+      <div class="fld"><label>Référence devis</label><input type="text" id="ref" placeholder="Ex: DEV-2026-001"></div>
+    </div>
+    <div class="g3">
+      <div class="fld"><label>Date du devis</label><input type="date" id="date" onchange="ra()"></div>
+      <div class="fld"><label>Validité (jours)</label><input type="number" id="validity" value="30" min="1" oninput="ra()"></div>
+      <div class="fld"><label>Contact</label><input type="text" id="contact" placeholder="Email ou téléphone"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Expéditeur & destinataire</div>
+    <div class="g2">
+      <div class="fld"><label>Expéditeur</label><input type="text" id="shipper" placeholder="Nom, pays" oninput="ra()"></div>
+      <div class="fld"><label>Destinataire</label><input type="text" id="consignee" placeholder="Nom, pays" oninput="ra()"></div>
+      <div class="fld"><label>Port / Ville d'origine</label><input type="text" id="origin" placeholder="Ex: Shanghai, CN" oninput="ra()"></div>
+      <div class="fld"><label>Port / Ville de destination</label><input type="text" id="dest" placeholder="Ex: Pointe-Noire, CG" oninput="ra()"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Mode de transport</div>
+    <div class="mtabs">
+      <button class="mtab active" onclick="setMode('maritime',this)">🚢 Maritime</button>
+      <button class="mtab" onclick="setMode('road',this)">🚛 Routier</button>
+    </div>
+    <div id="mf" class="g3">
+      <div class="fld"><label>Type d'envoi</label>
+        <select id="st" onchange="ra()">
+          <option value="FCL">FCL – Conteneur complet</option>
+          <option value="LCL">LCL – Groupage</option>
+          <option value="RORO">RoRo – Roulier</option>
+          <option value="VRAC">Vrac / conventionnel</option>
+        </select></div>
+      <div class="fld"><label>Type de conteneur</label>
+        <select id="cont" onchange="ra()">
+          <option value="20ST">20' Standard (21,7T / 33m³)</option>
+          <option value="40ST">40' Standard (26,5T / 67m³)</option>
+          <option value="40HC">40' High Cube (26,5T / 76m³)</option>
+          <option value="20RF">20' Réfrigéré (27,4T / 28m³)</option>
+          <option value="40RF">40' Réfrigéré (29,5T / 67m³)</option>
+        </select></div>
+      <div class="fld"><label>Nombre d'unités</label><input type="number" id="units" value="1" min="1"></div>
+    </div>
+    <div id="rf" class="g3" style="display:none">
+      <div class="fld"><label>Type de véhicule</label>
+        <select id="tt"><option>Semi-remorque 40T</option><option>Porteur 20T</option><option>Camionnette</option><option>Plateau</option><option>Frigo</option></select></div>
+      <div class="fld"><label>Nombre de camions</label><input type="number" id="trucks" value="1" min="1"></div>
+      <div class="fld"><label>Distance estimée (km)</label><input type="number" id="km" placeholder="Ex: 1500" oninput="ra()"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Marchandise</div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="fld"><label>Nature de la marchandise</label><input type="text" id="goods" placeholder="Ex: Matériel électrique" oninput="ra()"></div>
+      <div class="fld"><label>Poids brut (kg)</label><input type="number" id="weight" placeholder="Ex: 5000" oninput="ra()"></div>
+      <div class="fld"><label>Volume (m³)</label><input type="number" id="volume" placeholder="Ex: 12.5" step="0.1" oninput="ra()"></div>
+    </div>
+    <div class="g2">
+      <div class="fld"><label>Valeur commerciale (USD)</label><input type="number" id="gval" placeholder="Ex: 50000" oninput="ra();ct()"></div>
+      <div class="fld"><label>Code HS / Douanier</label><input type="text" id="hs" placeholder="Ex: 8544.42" oninput="ra()"></div>
+    </div>
+    <div class="prow">
+      <label>Mode de paiement :</label>
+      <select id="pay" onchange="ra()">
+        <option value="">— Non précisé —</option>
+        <option value="LC">Lettre de crédit (L/C)</option>
+        <option value="TT">Virement bancaire (T/T)</option>
+        <option value="CAD">Documents contre paiement (CAD)</option>
+        <option value="OA">Compte ouvert (Open Account)</option>
+        <option value="PREPAY">Paiement anticipé</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Incoterm
+      <span style="font-size:11px;color:var(--il);font-weight:400;margin-left:6px;text-transform:none">Incoterms® 2020 — CCI</span>
+      <button class="hlnk" onclick="switchTab('g',document.querySelectorAll('.tbtn')[1])">🧭 Aide au choix</button>
+    </div>
+    <div class="igrid" id="igrid"></div>
+    <div class="idesc" id="idesc"></div>
+    <div class="azone" id="ialz"></div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Postes de coût</div>
+    <div class="curr">
+      <label>Devise :</label>
+      <select id="cur1" onchange="ct()">
+        <option value="USD">USD – Dollar américain</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="XAF">XAF – Franc CFA</option>
+        <option value="CNY">CNY – Yuan chinois</option>
+        <option value="GBP">GBP – Livre sterling</option>
+      </select>
+      <select id="cur2" onchange="ct()">
+        <option value="">— Convertir aussi en —</option>
+        <option value="USD">USD</option><option value="EUR">EUR</option>
+        <option value="XAF">XAF</option><option value="CNY">CNY</option><option value="GBP">GBP</option>
+      </select>
+      <span class="rinfo" id="rinfo"></span>
+    </div>
+    <div class="chdr"><span>Description</span><span>Qté</span><span>Montant</span><span></span></div>
+    <div id="crows"></div>
+    <button class="abtn" onclick="addRow()">+ Ajouter un poste de coût</button>
+    <div class="tots">
+      <div class="tl"><span>Sous-total HT</span><span id="sub">0,00</span></div>
+      <div class="tl"><span>Taxe / TVA</span><span style="display:flex;align-items:center;gap:6px"><input type="number" id="tax" value="0" min="0" max="100" oninput="ct();ra()"> %</span></div>
+      <div class="tl"><span>Montant taxe</span><span id="taxamt">0,00</span></div>
+      <div class="tf"><span>Total général</span><span id="grand">0,00</span></div>
+      <div class="conv" id="convd"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stit">Conditions & remarques</div>
+    <div class="fld" style="margin-bottom:12px">
+      <label>Conditions particulières</label>
+      <textarea id="cond" placeholder="Ex: Délai de transit estimé 25 jours, hors dédouanement."></textarea>
+    </div>
+    <div class="fld">
+      <label>Remarques internes <span style="font-weight:400;color:var(--il)">(non visibles sur le devis)</span></label>
+      <textarea id="rem" placeholder="Notes internes..."></textarea>
+    </div>
+  </div>
+
+  <div class="arow">
+    <button class="breset" onclick="resetF()">↺ Réinitialiser</button>
+    <button class="bgen" id="bgen" onclick="genQ()">Générer le devis PDF <span class="probadge">PRO</span></button>
+  </div>
+  <div class="footer">Outil Transport & Incoterms® 2020 — CEMAC · Version Beta</div>
+</div>
+</div>
+
+<!-- ═══ PANEL GUIDE ═══ -->
+<div id="pg" class="panel">
+<div class="gc">
+  <div class="pwrap">
+    <div class="pinfo">
+      <span class="plbl">Progression</span>
+      <span class="pstep" id="gctr">1 / 5</span>
+    </div>
+    <div class="ptrack"><div class="pfill" id="gprog" style="width:0%"></div></div>
+  </div>
+  <div id="gstep"></div>
+  <div class="footer">Guide interactif Incoterms® 2020 — Optimisé CEMAC</div>
+</div>
+</div>
+
+<script>
+/* ─── TABS ─── */
+function switchTab(n,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ═══════════════════════════════════════
+   SOUMISSION
+═══════════════════════════════════════ */
+const INC=[
+  {c:'EXW',n:'Ex Works',m:['M','R'],d:'Le vendeur met la marchandise à disposition dans ses locaux. L\'acheteur supporte tous les frais et risques depuis le départ usine. <strong>Déconseillé pour le commerce international</strong> — réserver aux échanges domestiques selon la CCI.'},
+  {c:'FCA',n:'Free Carrier',m:['M','R'],d:'Le vendeur livre au transporteur désigné par l\'acheteur. Adapté à tous modes y compris FCL/LCL. <strong>Nouveauté 2020 :</strong> B/L à bord possible — compatible avec les lettres de crédit.'},
+  {c:'FAS',n:'Free Alongside Ship',m:['M'],d:'Livraison le long du navire au port d\'embarquement. Réservé au <strong>maritime conventionnel</strong> (vrac, non conteneurisé).'},
+  {c:'FOB',n:'Free On Board',m:['M'],d:'Livraison à bord du navire. Transfert des risques dès la mise à bord. Réservé au <strong>maritime conventionnel</strong>. Pour conteneurs FCL/LCL, utiliser FCA.'},
+  {c:'CFR',n:'Cost & Freight',m:['M'],d:'Vendeur paie le fret jusqu\'au port de destination. Risque transfère à l\'embarquement. <strong>Maritime conventionnel uniquement</strong>.'},
+  {c:'CIF',n:'Cost, Ins. & Freight',m:['M'],d:'Comme CFR + assurance minimale (clause C). Réservé au <strong>maritime conventionnel</strong>. Pour conteneurs, préférer CIP (tous risques). Assurance couvre 110% de la valeur.'},
+  {c:'CPT',n:'Carriage Paid To',m:['M','R'],d:'Vendeur paie le transport jusqu\'à destination. Risque transféré au premier transporteur. Adapté à tous modes.'},
+  {c:'CIP',n:'Carriage & Ins. Paid',m:['M','R'],d:'Comme CPT + assurance <strong>tous risques</strong> obligatoire (clause A). Recommandé pour marchandises de valeur.'},
+  {c:'DAP',n:'Delivered At Place',m:['M','R'],d:'Vendeur organise et paie jusqu\'à destination. Acheteur gère le dédouanement import et paie les droits.'},
+  {c:'DPU',n:'Delivered At Place Unloaded',m:['M','R'],d:'Ancien DAT — vendeur organise + décharge à destination. Seul Incoterm où le vendeur décharge. Acheteur gère le dédouanement.'},
+  {c:'DDP',n:'Delivered Duty Paid',m:['M','R'],d:'Obligation maximale vendeur : livraison dédouanée, droits et taxes payés. Vérifier que la réglementation <strong>autorise un importateur étranger</strong>.'},
+];
+const RATES={USD:1,EUR:1.08,XAF:0.00161,CNY:0.138,GBP:1.27};
+const CEMAC_UEMOA=['congo','brazzaville','pointe-noire','cameroun','douala','gabon','libreville','rca','bangui','tchad','ndjamena','guinée équatoriale','malabo','sénégal','dakar','côte d\'ivoire','abidjan','mali','bamako','burkina','ouagadougou','niger','niamey','bénin','cotonou','togo','lomé','guinée-bissau'];
+const CLIM={'20ST':{w:21700,v:33},'40ST':{w:26500,v:67},'40HC':{w:26460,v:76},'20RF':{w:27400,v:28},'40RF':{w:29500,v:67}};
+let selInc=null,mode='maritime',rows=[],rid=0;
+const csym=c=>({USD:'$',EUR:'€',XAF:'FCFA',CNY:'¥',GBP:'£'}[c]||c);
+const f2=v=>v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const hasCEMAC=d=>{const x=(d||'').toLowerCase();return CEMAC_UEMOA.some(k=>x.includes(k));};
+const hasIns=()=>rows.some(id=>{const r=document.getElementById('r'+id);if(!r)return false;const t=r.querySelector('input[type=text]');return t&&/assur/i.test(t.value);});
+const getT=()=>{let s=0;rows.forEach(id=>{const r=document.getElementById('r'+id);if(!r)return;const i=r.querySelectorAll('input[type=number]');s+=(parseFloat(i[0].value)||1)*(parseFloat(i[1].value)||0);});return s;};
+
+function setMode(m,btn){
+  mode=m;
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('mf').style.display=m==='maritime'?'grid':'none';
+  document.getElementById('rf').style.display=m==='road'?'grid':'none';
+  selInc=null;renderI();ra();
+}
+function renderI(){
+  const mk=mode==='maritime'?'M':'R';
+  document.getElementById('igrid').innerHTML=INC.filter(i=>i.m.includes(mk)).map(i=>
+    `<button class="ibtn${selInc===i.c?' sel':''}" onclick="selI('${i.c}')">${i.c}<span class="ibadge">${i.n}</span></button>`
+  ).join('');
+}
+function selI(c){
+  selInc=c;renderI();
+  const inc=INC.find(i=>i.c===c);
+  const d=document.getElementById('idesc');
+  d.style.display='block';
+  d.innerHTML=`<strong>${inc.c} – ${inc.n}</strong> | Incoterms® 2020<br><br>${inc.d}`;
+  ra();
+}
+const mkAl=(t,ic,ti,msg)=>`<div class="al a${t}"><div class="aic">${ic}</div><div><div class="atit">${ti}</div>${msg}</div></div>`;
+
+function ra(){
+  const inc=selInc,st=document.getElementById('st')?.value||'FCL',
+    cont=document.getElementById('cont')?.value||'20ST',
+    pay=document.getElementById('pay')?.value||'',
+    wt=parseFloat(document.getElementById('weight')?.value)||0,
+    vol=parseFloat(document.getElementById('volume')?.value)||0,
+    gv=parseFloat(document.getElementById('gval')?.value)||0,
+    gds=document.getElementById('goods')?.value||'',
+    hs=document.getElementById('hs')?.value||'',
+    orig=(document.getElementById('origin')?.value||'').toLowerCase().trim(),
+    dst=(document.getElementById('dest')?.value||'').toLowerCase().trim(),
+    val=parseInt(document.getElementById('validity')?.value)||30,
+    km=parseFloat(document.getElementById('km')?.value)||0,
+    tot=getT(),
+    iref=['20RF','40RF'].includes(cont),
+    lim=CLIM[cont];
+  const ia=[],ga=[];
+  if(inc){
+    if(['FCL','LCL'].includes(st)&&['FOB','CFR','CIF','FAS'].includes(inc)){
+      const alt=inc==='FOB'?'FCA':inc==='CFR'?'CPT':inc==='CIF'?'CIP':'FCA';
+      ia.push(mkAl('e','⚠','Incoterm incompatible avec le conteneur',`<strong>${inc}</strong> est réservé au maritime conventionnel. Pour un conteneur (${st}), utilisez <strong>${alt}</strong>.`));
+    }
+    if(inc==='EXW') ia.push(mkAl('w','!','EXW déconseillé en commerce international','Selon la CCI, EXW est fortement déconseillé pour les échanges internationaux. Préférez <strong>FCA</strong> pour l\'export.'));
+    if(inc==='DDP') ia.push(mkAl('w','!','DDP : vérifier les règles d\'importation locales','Certains pays africains n\'autorisent pas les sociétés étrangères comme importateurs officiels. Vérifiez la réglementation.'));
+    if(pay==='LC'&&['CPT','CIP','DAP','DPU','DDP'].includes(inc)) ia.push(mkAl('w','!','Compatibilité Lettre de crédit à vérifier',`<strong>${inc}</strong> génère généralement une LTA, pas un B/L classique. Confirmez avec votre banque.`));
+    if(pay==='LC'&&inc==='FCA') ia.push(mkAl('o','✓','FCA compatible Lettre de crédit (2020)','Depuis 2020, FCA permet de récupérer un B/L à bord — accepté par les banques pour une L/C.'));
+    if(pay==='LC'&&inc==='FOB') ia.push(mkAl('o','✓','FOB compatible Lettre de crédit','FOB génère un B/L maritime à bord, accepté par les banques en L/C.'));
+    if(pay==='OA'&&['CFR','CIF'].includes(inc)) ia.push(mkAl('w','!','Exposition élevée : '+inc+' + compte ouvert','Risque transféré à l\'embarquement mais paiement différé — envisager une assurance-crédit.'));
+    if(inc==='CIF') ia.push(mkAl('i','ℹ','CIF : couverture minimale (clause C)','Pour une couverture <strong>tous risques</strong> (clause A), utilisez <strong>CIP</strong> — obligatoire depuis 2020.'));
+    if(gv>50000&&inc==='EXW') ia.push(mkAl('i','ℹ','Valeur élevée sous EXW','Vendeur non couvert dès la sortie d\'entrepôt. Assurance fortement recommandée.'));
+    if(['EXW','FOB','CFR'].includes(inc)&&!hasIns()&&gv>0) ia.push(mkAl('i','ℹ','Assurance non incluse dans '+inc,`<strong>${inc}</strong> n'inclut pas d'assurance. Pensez à l'ajouter comme poste de coût.`));
+    if(iref&&['EXW','FOB','CFR'].includes(inc)) ia.push(mkAl('w','!','Conteneur réfrigéré : assurance recommandée','Risque élevé d\'avarie — préférez <strong>CIP</strong> ou <strong>CIF</strong>.'));
+    if(inc==='DDP'&&hasCEMAC(dst)) ia.push(mkAl('w','!','DDP en zone CEMAC : commissionnaire requis','Le dédouanement DDP en CEMAC nécessite un commissionnaire agréé local. Précisez dans les conditions.'));
+    if(!ia.length) ia.push(mkAl('o','✓','Incoterm valide pour ce contexte',`<strong>${inc}</strong> – Incoterms® 2020 est adapté au mode et au contexte. Aucune incompatibilité détectée.`));
+  }
+  if(gv===0&&tot>0) ga.push(mkAl('w','!','Valeur commerciale manquante','Nécessaire pour calculer l\'assurance et les droits de douane.'));
+  if(!hs&&dst) ga.push(mkAl('w','!','Code HS recommandé','Requis pour le dédouanement à l\'import. Son absence peut bloquer la marchandise.'));
+  if(lim&&wt>lim.w) ga.push(mkAl('e','⚠',`Poids excessif pour un ${cont}`,`${wt.toLocaleString('fr-FR')} kg déclarés — max : ${lim.w.toLocaleString('fr-FR')} kg.`));
+  if(lim&&vol>lim.v) ga.push(mkAl('w','!',`Volume excessif pour un ${cont}`,`${vol} m³ déclarés — max : ${lim.v} m³.`));
+  if(!gds) ga.push(mkAl('w','!','Nature de la marchandise manquante','Requise pour les documents douaniers et l\'assurance.'));
+  if(orig&&dst&&orig===dst) ga.push(mkAl('e','⚠','Origine et destination identiques','Vérifiez les informations saisies.'));
+  if(val<7) ga.push(mkAl('w','!','Validité très courte',`${val} jours — 7 jours est le minimum recommandé.`));
+  if(inc&&['CPT','CIP','DAP','DPU','DDP','CFR','CIF'].includes(inc)&&tot===0) ga.push(mkAl('e','⚠','Postes de coût manquants',`${inc} implique des frais à charge du vendeur. Au moins un poste doit être renseigné.`));
+  if(mode==='road'&&km>2000) ga.push(mkAl('i','ℹ','Transport long-courrier','Pour plus de 2 000 km, précisez les corridors et points de passage douaniers.'));
+  if(gv>100000&&!hasIns()) ga.push(mkAl('w','!','Valeur élevée sans assurance','Valeur > 100 000 USD sans poste d\'assurance — fortement recommandée.'));
+  document.getElementById('ialz').innerHTML=ia.join('');
+  document.getElementById('galz').innerHTML=ga.join('');
+  const all=[...ia,...ga],ne=all.filter(a=>a.includes('ae')).length;
+  const b=document.getElementById('bgen');b.disabled=ne>0;
+  b.title=ne>0?`${ne} erreur(s) à corriger`:'';
+}
+
+function addRow(desc='',qty=1,amt=''){
+  const id=++rid;rows.push(id);
+  const div=document.createElement('div');div.className='crow';div.id='r'+id;
+  div.innerHTML=`<input type="text" placeholder="Ex: Fret maritime" value="${desc}" oninput="ct();ra()">
+    <input type="number" value="${qty}" min="1" oninput="ct();ra()" style="text-align:center">
+    <input type="number" placeholder="0.00" value="${amt}" step="0.01" oninput="ct();ra()" style="text-align:right">
+    <button class="dbtn" onclick="delRow(${id})">×</button>`;
+  document.getElementById('crows').appendChild(div);ct();ra();
+}
+function delRow(id){rows=rows.filter(r=>r!==id);document.getElementById('r'+id)?.remove();ct();ra();}
+function ct(){
+  let s=0;rows.forEach(id=>{const r=document.getElementById('r'+id);if(!r)return;const i=r.querySelectorAll('input[type=number]');s+=(parseFloat(i[0].value)||1)*(parseFloat(i[1].value)||0);});
+  const tx=parseFloat(document.getElementById('tax').value)||0,ta=s*tx/100,grand=s+ta;
+  const c=document.getElementById('cur1').value,sym=csym(c);
+  document.getElementById('sub').textContent=sym+' '+f2(s);
+  document.getElementById('taxamt').textContent=sym+' '+f2(ta);
+  document.getElementById('grand').textContent=sym+' '+f2(grand);
+  const c2=document.getElementById('cur2').value;
+  if(c2&&c2!==c){
+    const rate=RATES[c]/RATES[c2];
+    document.getElementById('convd').textContent='≈ '+csym(c2)+' '+f2(grand*rate)+' ('+c2+')';
+    document.getElementById('rinfo').textContent='1 '+c+' ≈ '+rate.toFixed(4)+' '+c2;
+  }else{document.getElementById('convd').textContent='';document.getElementById('rinfo').textContent='';}
+}
+function genQ(){alert('La génération PDF sera disponible dans la version PRO.\nMerci de tester cet outil !');}
+function resetF(){
+  if(!confirm('Réinitialiser le formulaire ?'))return;
+  document.querySelectorAll('input[type=text],input[type=number],input[type=date],textarea').forEach(el=>{if(el.id!=='tax')el.value='';});
+  document.getElementById('tax').value=0;document.getElementById('validity').value=30;
+  selInc=null;rows=[];document.getElementById('crows').innerHTML='';
+  document.getElementById('idesc').style.display='none';
+  document.getElementById('ialz').innerHTML='';document.getElementById('galz').innerHTML='';
+  renderI();ct();document.getElementById('date').value=new Date().toISOString().split('T')[0];
+  addRow('Fret maritime / routier');addRow('Frais portuaires / manutention');addRow('Dédouanement');addRow('Assurance');
+}
+document.getElementById('date').value=new Date().toISOString().split('T')[0];
+renderI();addRow('Fret maritime / routier');addRow('Frais portuaires / manutention');addRow('Dédouanement');addRow('Assurance');
+
+/* ═══════════════════════════════════════
+   GUIDE INCOTERMS CEMAC
+═══════════════════════════════════════ */
+const CPAYS=[
+  {code:"CM",name:"Cameroun",tva:19.25},{code:"CG",name:"Congo",tva:18},
+  {code:"GA",name:"Gabon",tva:18},{code:"TD",name:"Tchad",tva:18},
+  {code:"CF",name:"RCA",tva:19},{code:"GQ",name:"Guinée Équatoriale",tva:15}
+];
+const CDUTY={
+  "0":{dd:5,redev:0.5},"1":{dd:10,redev:1},"2":{dd:20,redev:1},"3":{dd:30,redev:2}
+};
+const GSTEPS=[
+  {id:"product",lbl:"Identification du produit",q:"Quel produit est transporté ?",
+    hint:"L'IA identifie le code SH et la catégorie tarifaire CEMAC (TEC). Cela permet de calculer les droits de douane à l'arrivée.",type:"search"},
+  {id:"mode",lbl:"Mode de transport",q:"Quel est le mode de transport principal ?",
+    hint:"Certains Incoterms sont exclusivement maritimes (FOB, CIF, CFR, FAS). Pour tout autre mode, utilisez les Incoterms polyvalents.",
+    opts:[{v:"sea",t:"Maritime uniquement",s:"Conteneur FCL/LCL, vrac, RoRo — port à port"},{v:"multi",t:"Multimodal / Aérien / Routier",s:"Aérien, routier, ferroviaire ou transport mixte"}]},
+  {id:"control",lbl:"Maîtrise du transport",q:"Qui organise et paie le fret principal ?",
+    hint:"Maîtriser le transport = choisir le transporteur, négocier les tarifs. Celui qui maîtrise supporte le risque en cas d'incident.",
+    opts:[{v:"seller",t:"Le vendeur organise et paie le fret",s:"CIF, CIP, CPT, CFR — le vendeur maîtrise la chaîne"},{v:"buyer",t:"L'acheteur organise et paie le fret",s:"Le vendeur met à disposition, l'acheteur prend en charge"}]},
+  {id:"insurance",lbl:"Couverture d'assurance",q:"Une assurance est-elle requise à la charge du vendeur ?",
+    hint:"Seuls CIF et CIP obligent le vendeur à assurer. CIP impose tous risques (ICC A) depuis 2020 — supérieur à CIF (ICC C).",
+    opts:[{v:"yes",t:"Oui — le vendeur doit assurer",s:"Assurance incluse dans le prix vendeur"},{v:"no",t:"Non — acheteur ou non requise",s:"L'acheteur gère sa propre couverture"}]},
+  {id:"delivery",lbl:"Point de livraison",q:"Jusqu'où le vendeur prend-il en charge ?",
+    hint:"Le point de livraison détermine où le risque passe du vendeur à l'acheteur.",
+    opts:[{v:"origin",t:"Départ usine / entrepôt vendeur",s:"Minimum vendeur"},{v:"terminal",t:"Terminal d'export (port/aéroport départ)",s:"Vendeur livre au point de départ"},{v:"onboard",t:"À bord du navire au port d'embarquement",s:"Transfert à bord"},{v:"dest",t:"Port ou lieu de destination",s:"Vendeur paie le fret jusqu'à l'arrivée"},{v:"door",t:"Porte acheteur — tout inclus, taxes comprises",s:"Maximum vendeur"}]}
+];
+const GREC={
+  EXW:{n:"EXW",full:"Ex Works",t:"Minimum vendeur — l'acheteur prend tout en charge",v:10,b:90,ok:["Vendeur sans logistique export","Acheteur très expérimenté","Transactions domestiques"],warn:["Difficile pour exports internationaux","Acheteur étranger gère les formalités d'export du pays vendeur"],info:["L'acheteur supporte l'intégralité du risque dès la mise à disposition"],ped:"EXW place toute la responsabilité sur l'acheteur dès que la marchandise est disponible chez le vendeur, y compris le chargement. Un acheteur étranger rencontre des difficultés pour gérer les formalités d'export — FCA est généralement préféré.",alt:["FCA","FOB"],cif:false},
+  FCA:{n:"FCA",full:"Free Carrier",t:"L'Incoterm moderne et polyvalent de référence",v:30,b:70,ok:["Tous modes : aérien, routier, maritime","Conteneur FCL/LCL","Crédit documentaire (nouveauté 2020)"],warn:[],info:["Nouveauté 2020 : B/L à bord possible avec FCA — facilite les crédits documentaires"],ped:"FCA est l'Incoterm le plus utilisé car il s'adapte à tous les modes. La nouveauté 2020 permet d'émettre un connaissement à bord, facilitant les paiements par lettre de crédit — avantage majeur pour les échanges avec l'Afrique.",alt:["CPT","EXW"],cif:false},
+  FAS:{n:"FAS",full:"Free Alongside Ship",t:"Le long du navire — usage vrac spécialisé",v:35,b:65,ok:["Vrac : grain, minerai, bois, coton"],warn:["Très peu adapté hors vrac","Risque quai entièrement à la charge de l'acheteur"],info:["Maritime uniquement — risque passe avant le chargement à bord"],ped:"FAS est utilisé pour les marchandises en vrac déposées le long du navire. Le risque passe à l'acheteur avant le chargement à bord — contrairement à FOB.",alt:["FOB","FCA"],cif:false},
+  FOB:{n:"FOB",full:"Free On Board",t:"Classique maritime — transfert de risque à bord",v:40,b:60,ok:["Vrac, RoRo, navires conventionnels","Crédit documentaire"],warn:["Conteneur : FCA est plus adapté","Zone grise de responsabilité avant embarquement"],info:["Maritime uniquement — risque passe à bord"],ped:"FOB est l'Incoterm maritime le plus connu. Le risque passe à bord au port d'embarquement. Pour les conteneurs, FCA est plus adapté car le transfert réel se fait au terminal.",alt:["FCA","CFR"],cif:false},
+  CFR:{n:"CFR",full:"Cost and Freight",t:"Vendeur paie le fret, acheteur supporte le risque voyage",v:60,b:40,ok:["Vendeur maîtrise le fret maritime","Acheteur préfère gérer sa propre assurance"],warn:["Décalage risque/coût : risque transfère à bord, fret payé à destination","Maritime uniquement"],info:["L'acheteur supporte le risque malgré que le vendeur paie le fret"],ped:"CFR : le vendeur paie le fret mais le risque passe à l'acheteur dès l'embarquement. L'acheteur est exposé pendant tout le voyage sans contrôle sur le transporteur. Assurance propre recommandée.",alt:["CIF","FOB"],cif:true},
+  CIF:{n:"CIF",full:"Cost, Insurance & Freight",t:"Fret + assurance inclus — base officielle des droits CEMAC",v:65,b:35,ok:["Importation en zone CEMAC/UEMOA","Crédit documentaire"],warn:["Assurance minimale (ICC C) — insuffisante pour produits fragiles","Conteneur : CIP est plus adapté"],info:["La valeur CIF est la base légale de calcul des droits de douane en zone CEMAC"],ped:"CIF est l'Incoterm de référence pour les importations en Afrique centrale : la valeur CIF est la base légale des droits CEMAC. Attention : assurance ICC C seulement — pour marchandises fragiles, exiger ICC A (utiliser CIP en multimodal).",alt:["CIP","CFR"],cif:true},
+  CPT:{n:"CPT",full:"Carriage Paid To",t:"Multimodal — fret payé à destination, risque au premier transporteur",v:60,b:40,ok:["Transport multimodal ou aérien","Vendeur maîtrise le fret"],warn:["Risque transfère au premier transporteur — pas au lieu de destination"],info:["Équivalent multimodal de CFR"],ped:"CPT : le vendeur paie le fret jusqu'à destination mais le risque passe dès la remise au premier transporteur. Conseiller à l'acheteur de souscrire sa propre assurance.",alt:["CIP","FCA"],cif:true},
+  CIP:{n:"CIP",full:"Carriage & Insurance Paid To",t:"Multimodal — fret + tous risques (ICC A) inclus",v:70,b:30,ok:["Transport multimodal ou aérien","Marchandises fragiles ou de valeur","Assurance tous risques incluse"],warn:[],info:["Nouveauté 2020 : CIP impose l'assurance tous risques ICC A — bien supérieur à CIF (ICC C)"],ped:"Depuis 2020, CIP impose une assurance tous risques (ICC A). C'est l'Incoterm idéal pour marchandises de valeur en multimodal : vendeur organise tout et offre une protection maximale.",alt:["CPT","DAP"],cif:true},
+  DAP:{n:"DAP",full:"Delivered At Place",t:"Livraison à destination — dédouanement import à l'acheteur",v:80,b:20,ok:["Vendeur maîtrise toute la chaîne logistique"],warn:["Vendeur assume le risque jusqu'à destination","Droits et taxes restent à la charge de l'acheteur"],info:["Remplace l'ancien Incoterm DDU"],ped:"DAP : vendeur livre à destination sans payer les droits de douane. L'acheteur assume les formalités et taxes. Idéal quand le vendeur veut maîtriser la logistique sans s'engager sur les procédures douanières locales.",alt:["DPU","DDP"],cif:true},
+  DPU:{n:"DPU",full:"Delivered at Place Unloaded",t:"Seul Incoterm incluant le déchargement à destination",v:82,b:18,ok:["Terminal portuaire ou aéroportuaire","Vendeur organise le déchargement"],warn:["Vendeur doit assumer le coût du déchargement à l'étranger"],info:["Ancien DAT — renommé DPU en 2020. Seul Incoterm où le vendeur décharge."],ped:"DPU est unique : le seul Incoterm qui oblige le vendeur à décharger à destination. Le risque passe une fois le déchargement effectué. Anciennement DAT, renommé en 2020.",alt:["DAP","DDP"],cif:true},
+  DDP:{n:"DDP",full:"Delivered Duty Paid",t:"Maximum vendeur — tout inclus, droits et taxes compris",v:95,b:5,ok:["Acheteur veut un prix clé en main","E-commerce international"],warn:["Vendeur doit maîtriser la douane étrangère","Risque maximal pour le vendeur"],info:["Opposé exact d'EXW — le vendeur supporte tout, y compris les droits de douane à destination"],ped:"DDP est l'inverse d'EXW : le vendeur assume tout jusqu'aux droits et taxes dans le pays de l'acheteur. Confort maximum pour l'acheteur, risque maximum pour le vendeur.",alt:["DAP","DPU"],cif:true}
+};
+let gs=0,ga={},gprod=null,gctry="CG",gcif="",galt=null;
+const gvis=()=>GSTEPS.filter(s=>{if(s.id==="insurance")return ga.control==="seller";return true;});
+function grec(){
+  const{mode,control,insurance,delivery}=ga;
+  if(mode==="sea"){
+    if(control==="buyer"){if(delivery==="origin")return"EXW";if(delivery==="terminal")return"FAS";return"FOB";}
+    if(control==="seller"){if(insurance==="yes")return"CIF";if(delivery==="door")return"DDP";return"CFR";}
+  }
+  if(mode==="multi"){
+    if(control==="buyer"){if(delivery==="origin")return"EXW";return"FCA";}
+    if(control==="seller"){if(insurance==="yes")return"CIP";if(delivery==="door")return"DDP";if(delivery==="dest")return"DAP";if(delivery==="terminal")return"DPU";return"CPT";}
+  }
+  return"FCA";
+}
+function gcalc(){
+  if(!gprod||!gcif)return null;
+  const d=CDUTY[gprod.cat],c=CPAYS.find(x=>x.code===gctry);
+  if(!d||!c)return null;
+  const cif=parseFloat(gcif);if(isNaN(cif)||cif<=0)return null;
+  const dd=cif*d.dd/100,rv=cif*d.redev/100,tx=(cif+dd+rv)*c.tva/100;
+  return{cif,dd,rv,tax:tx,tot:dd+rv+tx,ddR:d.dd,rvR:d.redev,tvaR:c.tva,cn:c.name};
+}
+const gf=n=>n.toLocaleString("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+async function gsearch(q){
+  if(!q.trim())return;
+  const ast=document.getElementById("gast"),sb=document.getElementById("gsb"),
+    lst=document.getElementById("glst"),err=document.getElementById("gerr");
+  ast.className="ast ld";ast.textContent="Recherche en cours...";
+  sb.disabled=true;lst.innerHTML="";err.style.display="none";
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:800,
+        system:`Tu es expert en classification douanière CEMAC. Retourne UNIQUEMENT un tableau JSON de 3 suggestions sans backticks. Format : [{"hs":"XXXXXXXX","desc":"Description courte","cat":"0|1|2|3","dd":5,"why":"Raison en 1 phrase"}]. TEC CEMAC : cat 0=5%, cat 1=10%, cat 2=20%, cat 3=30%.`,
+        messages:[{role:"user",content:"Produit importé : "+q}]})
+    });
+    const data=await res.json();
+    const txt=(data.content?.[0]?.text||"").replace(/```json|```/g,"").trim();
+    const sugg=JSON.parse(txt);
+    ast.className="ast";ast.textContent=sugg.length+" code(s) SH — sélectionnez le plus adapté :";
+    lst.innerHTML=sugg.map(s=>`
+      <div class="sitem" onclick='gpick(${JSON.stringify(s).replace(/'/g,"\\'")})'>
+        <div class="shdr2"><span class="scode">${s.hs}</span><span class="scat">Cat. ${s.cat} — DD ${s.dd}%</span></div>
+        <div class="sdesc">${s.desc}</div><div class="sdd">${s.why}</div>
+      </div>`).join("");
+  }catch(e){
+    ast.className="ast";ast.textContent="";
+    err.style.display="block";err.textContent="Erreur de connexion à l'IA. Vérifiez la connexion.";
+  }
+  sb.disabled=false;
+}
+function gpick(s){gprod=s;ga.product=s;gs++;grender();}
+function gchoose(id,v){
+  ga[id]=v;
+  const vs=gvis();
+  if(gs<vs.length-1){gs++;grender();}else{galt=null;gresult(null);}
+}
+function gback(){if(gs>0){gs--;grender();}}
+function grender(){
+  const vs=gvis(),tot=vs.length,sd=vs[gs];
+  document.getElementById("gprog").style.width=(gs/tot*100)+"%";
+  document.getElementById("gctr").textContent=(gs+1)+" / "+tot;
+  if(!sd){galt=null;gresult(null);return;}
+  if(sd.type==="search"){
+    document.getElementById("gstep").innerHTML=`
+      <div class="gs active">
+        <div class="snum">${sd.lbl}</div>
+        <div class="sq">${sd.q}</div>
+        <div class="sh">${sd.hint}</div>
+        <div class="sbox">
+          <div class="srow">
+            <input class="sinp" id="gpi" type="text" placeholder="Ex : téléviseur LED, ciment Portland, groupe électrogène..." onkeydown="if(event.key==='Enter')gsearch(this.value)">
+            <button class="sbtn" id="gsb" onclick="gsearch(document.getElementById('gpi').value)">Rechercher</button>
+          </div>
+          <div class="ast" id="gast"></div>
+          <div class="errbox" id="gerr"></div>
+          <div class="slist" id="glst"></div>
+        </div>
+        ${gs>0?'<button class="bbk" onclick="gback()">← Revenir</button>':''}
+      </div>`;return;
+  }
+  document.getElementById("gstep").innerHTML=`
+    <div class="gs active">
+      <div class="snum">${sd.lbl}</div>
+      <div class="sq">${sd.q}</div>
+      <div class="sh">${sd.hint}</div>
+      <div class="opts">
+        ${sd.opts.map(o=>`<button class="obtn" onclick="gchoose('${sd.id}','${o.v}')">
+          <span class="ot">${o.t}</span><span class="os">${o.s}</span></button>`).join("")}
+      </div>
+      ${gs>0?'<button class="bbk" onclick="gback()">← Revenir</button>':''}
+    </div>`;
+}
+function gresult(ac){
+  document.getElementById("gprog").style.width="100%";
+  document.getElementById("gctr").textContent="Résultat";
+  galt=ac;
+  const code=ac||grec(),r=GREC[code];
+  const copts=CPAYS.map(c=>`<option value="${c.code}"${c.code===gctry?" selected":""}>${c.name}</option>`).join("");
+  const d=gcalc();
+  const acs=ac||'';
+  let cust="";
+  if(gprod&&r.cif){
+    cust=`<div class="rsec"><div class="rsti">Simulation douanière CEMAC</div>
+      <div class="cusbox">
+        <div class="cushdr">Produit : ${gprod.desc} — SH ${gprod.hs} — Cat. ${gprod.cat} (DD ${gprod.dd}%)</div>
+        <div class="cusinp">
+          <input class="ci" id="gcifi" type="number" min="0" placeholder="Valeur CIF en USD" value="${gcif}" oninput="gcif=this.value;gresult('${acs}')">
+          <select class="csel" onchange="gctry=this.value;gresult('${acs}')"> ${copts}</select>
+        </div>
+        <div class="cutbl">
+          ${d?`<div class="curow"><span class="culbl">Valeur CIF de référence</span><span class="cuval">${gf(d.cif)} USD</span></div>
+          <div class="curow"><span class="culbl">Droit de douane TEC (${d.ddR}%)</span><span class="cuval">${gf(d.dd)} USD</span></div>
+          <div class="curow"><span class="culbl">Redevance communautaire (${d.rvR}%)</span><span class="cuval">${gf(d.rv)} USD</span></div>
+          <div class="curow"><span class="culbl">TVA ${d.cn} (${d.tvaR}% sur CIF+DD+RC)</span><span class="cuval">${gf(d.tax)} USD</span></div>
+          <div class="curow"><span class="culbl">Total charges douanières estimées</span><span class="cuval">${gf(d.tot)} USD</span></div>`
+          :`<div class="cuempty">Saisissez la valeur CIF pour simuler les droits à l'importation.</div>`}
+        </div>
+        <div class="cunote">La valeur CIF est la base légale de calcul des droits CEMAC — c'est pourquoi le choix de l'Incoterm impacte directement la fiscalité import. TVA calculée sur CIF + DD + Redevance.</div>
+      </div></div>`;
+  }else if(gprod&&!r.cif){
+    cust=`<div class="rsec"><div class="rsti">Note douanière CEMAC</div>
+      <div class="pedbox">Avec <strong>${code}</strong>, le vendeur ne paie pas le fret. La douane CEMAC devra reconstituer la valeur CIF à l'arrivée. Pour faciliter le dédouanement, il est souvent préférable d'utiliser CIF, CPT ou CIP.</div></div>`;
+  }
+  const alts=r.alt.map(a=>`<span class="achip" onclick="gresult('${a}')">${a} →</span>`).join("");
+  document.getElementById("gstep").innerHTML=`
+    <div class="gs active">
+      <div class="rcard">
+        <div class="rhdr">
+          <div class="rbadge">${ac?"Incoterm alternatif":"Incoterm recommandé"}</div>
+          <div class="rname">${r.n} — ${r.full}</div>
+          <div class="rtag">${r.t}</div>
+        </div>
+        <div class="rbody">
+          <div class="rsec">
+            <div class="rsti">Répartition des responsabilités</div>
+            <div class="tbar">
+              <div class="bv" style="flex:${r.v}">Vendeur ${r.v}%</div>
+              <div class="bb" style="flex:${r.b}">Acheteur ${r.b}%</div>
+            </div>
+            <div class="blbls"><span>Coûts & risques vendeur</span><span>Coûts & risques acheteur</span></div>
+          </div>
+          <div class="rsec">
+            <div class="rsti">Contextes adaptés</div>
+            <div class="pills">${r.ok.map(x=>`<span class="pill po">${x}</span>`).join("")}</div>
+          </div>
+          ${r.warn.length?`<div class="rsec"><div class="rsti">Points de vigilance</div>
+            <div class="pills">${r.warn.map(x=>`<span class="pill pw">${x}</span>`).join("")}</div></div>`:""}
+          <div class="rsec">
+            <div class="rsti">Incoterms 2020 — À savoir</div>
+            <div class="pills">${r.info.map(x=>`<span class="pill pi">${x}</span>`).join("")}</div>
+          </div>
+          <div class="rsec">
+            <div class="rsti">Comprendre en pratique</div>
+            <div class="pedbox">${r.ped}</div>
+          </div>
+          ${cust}
+          <div class="alts">
+            <div class="rsti" style="margin-bottom:.5rem">Autres Incoterms à explorer</div>
+            ${alts}
+          </div>
+        </div>
+      </div>
+      <button class="rsbtn" onclick="grestart()">↺ Recommencer un nouveau guide</button>
+    </div>`;
+}
+function grestart(){gs=0;ga={};gprod=null;gcif="";galt=null;grender();}
+grender();
+</script>
+</body>
+</html>
